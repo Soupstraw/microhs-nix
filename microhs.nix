@@ -5,11 +5,9 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "augustss";
     repo = "MicroHs";
-    rev = "efdc17331aba84555fe9931748138aced8a45a63";
-    hash = "sha256-ftvc6WBHvvlQCL9NsnX81V19SXKhHKXaeVfw8I5tFyo=";
+    rev = "41d50f9c3c067908585d8cd259779f41745ca350";
+    hash = "sha256-3eIw5obGrTJ4RPZoY6bjCF5OPu090Pw4ul1SqH8/yYI=";
   };
-  preBuild = ''
-    substituteInPlace Makefile --replace-fail "echo 'module" "echo -e 'module"
-    substituteInPlace Makefile --replace-fail "MCABAL=\$(HOME)/.mcabal" "MCABAL=\$(out)"
-  '';
+
+  makeFlags = [ "MCABAL=$(out)" ];
 }
