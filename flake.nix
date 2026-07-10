@@ -14,6 +14,7 @@
     in rec {
       packages = forAllSystems (system: rec {
         microhs = (nixPkgsFor system).callPackage ./microhs.nix { };
+        microcabal = (nixPkgsFor system).callPackage ./microcabal.nix {};
         default = microhs;
       });
       apps = forAllSystems (system: {
